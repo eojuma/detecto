@@ -93,7 +93,7 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 ### Phase 5 — Testing & benchmarking
 - [x] Assemble 14 COCO val2017 sample images (close, distant, pair, groups, crowd, occlusion, partial, dark, zero-person)
 - [x] `tests/ground_truth.csv` — template with `coco_count` hint; **`manual_count` still to be filled by hand**
-- [ ] `scripts/benchmark.py` — per-image metrics + markdown table
+- [x] `scripts/benchmark.py` — per-image metrics + markdown table (guard verified)
 - [ ] Run benchmark, record **real** numbers
 
 ### Phase 6 — Documentation
@@ -131,7 +131,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 19 | `scripts/smoke.sh` | DONE |
 | 20 | **obtain `yolov8n.onnx`** via `scripts/export_model.py` (Colab) | **BLOCKER** |
 | 21 | sample images (14) + `tests/ground_truth.csv` | DONE (manual counts pending) |
-| 22 | `scripts/benchmark.py` | **NEXT** |
+| 22 | `scripts/benchmark.py` | DONE |
+| 23 | `README.md` | **NEXT** |
 | 23 | `README.md` | pending |
 | 21 | `README.md` | deferred |
 
