@@ -81,7 +81,7 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 - [x] Vite scaffold (`package.json`, `vite.config.js`, `index.html`, `main.jsx`, `App.jsx`, page stubs) — builds clean
 - [x] `ImageUpload.jsx` — drag-drop + picker, client-side validation
 - [x] `BoxOverlay.jsx` — inline SVG viewBox + label collision handling
-- [ ] `DetectionPanel.jsx` — count / avg confidence / timing / errors
+- [x] `DetectionPanel.jsx` — count / avg confidence / timing / errors / zero-person
 - [ ] `DetectionPage.jsx` — orchestration
 
 ### Phase 4 — Frontend: History View
@@ -122,8 +122,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 10 | `api.js` client | DONE |
 | 11 | `ImageUpload.jsx` | DONE |
 | 12 | `BoxOverlay.jsx` | DONE |
-| 13 | `DetectionPanel.jsx` | **NEXT** |
-| 14 | `DetectionPage.jsx` | pending |
+| 13 | `DetectionPanel.jsx` | DONE |
+| 14 | `DetectionPage.jsx` | **NEXT** |
 | 15 | `HistoryFilters.jsx` | pending |
 | 16 | `HistoryTable.jsx` | pending |
 | 17 | `CountChart.jsx` | pending |
