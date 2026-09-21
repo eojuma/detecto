@@ -370,3 +370,57 @@ select {
   display: flex;
   gap: 10px;
 }
+
+/* --- HistoryFilters ----------------------------------------------------- */
+
+.filters-form {
+  margin-bottom: 20px;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.filter-confidence {
+  gap: 8px;
+}
+
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.confidence-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.confidence-control input[type='range'] {
+  flex: 1;
+  padding: 0;
+}
+
+.confidence-value {
+  min-width: 34px;
+  text-align: right;
+  color: var(--text);
+}
+
+.filter-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}

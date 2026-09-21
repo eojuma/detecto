@@ -85,7 +85,7 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 - [x] `DetectionPage.jsx` — orchestration (object-URL lifecycle, request state machine)
 
 ### Phase 4 — Frontend: History View
-- [ ] `HistoryFilters.jsx`
+- [x] `HistoryFilters.jsx` — date/time/confidence filters, draft state
 - [ ] `HistoryTable.jsx`
 - [ ] `CountChart.jsx`
 - [ ] `HistoryPage.jsx`
@@ -124,8 +124,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 12 | `BoxOverlay.jsx` | DONE |
 | 13 | `DetectionPanel.jsx` | DONE |
 | 14 | `DetectionPage.jsx` | DONE |
-| 15 | `HistoryFilters.jsx` | **NEXT** |
-| 16 | `HistoryTable.jsx` | pending |
+| 15 | `HistoryFilters.jsx` | DONE |
+| 16 | `HistoryTable.jsx` | **NEXT** |
 | 17 | `CountChart.jsx` | pending |
 | 18 | `HistoryPage.jsx` | pending |
 | 19 | `scripts/smoke.sh` | deferred to after frontend |
