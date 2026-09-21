@@ -66,7 +66,7 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 - [ ] `docs/decisions.md` — expand D1–D9 into full write-ups
 
 ### Phase 1 — Backend core
-- [ ] `backend/models/record.py` — Pydantic + SQLite schema
+- [x] `backend/models/record.py` — Pydantic schemas + SQLite repository (smoke-tested)
 - [ ] `backend/utils/preprocessing.py` — decode, letterbox, normalize, **inverse transform**, NMS
 - [ ] `backend/routes/detect.py` — `POST /detect`
 - [ ] `backend/routes/history.py` — `GET /history`, `DELETE /reset`
@@ -113,8 +113,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 1 | `requirements.txt` | DONE |
 | 2 | `.env.example` | DONE |
 | 3 | `.gitignore` | DONE |
-| 4 | `backend/models/record.py` | **NEXT** |
-| 5 | `backend/utils/preprocessing.py` | pending |
+| 4 | `backend/models/record.py` | DONE |
+| 5 | `backend/utils/preprocessing.py` | **NEXT** |
 | 6 | `backend/routes/detect.py` | pending |
 | 7 | `backend/routes/history.py` | pending |
 | 8 | `backend/main.py` | pending |
