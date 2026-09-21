@@ -499,3 +499,28 @@ select {
 .chart-tooltip-muted {
   color: var(--text-muted);
 }
+
+/* --- HistoryPage -------------------------------------------------------- */
+
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+button.danger {
+  border-color: var(--danger);
+  color: #ffb4b0;
+}
+
+button.danger:hover:not(:disabled) {
+  background: rgba(248, 81, 73, 0.12);
+}
+
+.history-meta {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  margin-bottom: 12px;
+}

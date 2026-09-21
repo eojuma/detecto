@@ -88,7 +88,7 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 - [x] `HistoryFilters.jsx` — date/time/confidence filters, draft state
 - [x] `HistoryTable.jsx` — sortable, empty state
 - [x] `CountChart.jsx` — Recharts time series
-- [ ] `HistoryPage.jsx`
+- [x] `HistoryPage.jsx` — one result set drives chart + table; clear-history
 
 ### Phase 5 — Testing & benchmarking
 - [ ] Assemble 10+ sample images (easy, occlusion, partial, distant, dark, zero-person)
@@ -127,8 +127,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 15 | `HistoryFilters.jsx` | DONE |
 | 16 | `HistoryTable.jsx` | DONE |
 | 17 | `CountChart.jsx` | DONE |
-| 18 | `HistoryPage.jsx` | **NEXT** |
-| 19 | `scripts/smoke.sh` | deferred to after frontend |
+| 18 | `HistoryPage.jsx` | DONE |
+| 19 | `scripts/smoke.sh` | **NEXT** |
 | 20 | `scripts/benchmark.py` | deferred |
 | 21 | `README.md` | deferred |
 
