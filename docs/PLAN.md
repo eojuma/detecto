@@ -61,7 +61,7 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 ### Phase 0 — Setup & configuration
 - [x] `requirements.txt` — pinned, clean install verified in fresh venv
 - [x] `.env.example` — all tunables documented
-- [ ] `.gitignore`
+- [x] `.gitignore` — verified `.venv` and `.env` are ignored
 - [ ] `docs/PLAN.md` ← this file (you are reading it)
 - [ ] `docs/decisions.md` — expand D1–D9 into full write-ups
 
@@ -112,8 +112,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 |------|------|--------|
 | 1 | `requirements.txt` | DONE |
 | 2 | `.env.example` | DONE |
-| 3 | `.gitignore` | **NEXT** |
-| 4 | `backend/models/record.py` | pending |
+| 3 | `.gitignore` | DONE |
+| 4 | `backend/models/record.py` | **NEXT** |
 | 5 | `backend/utils/preprocessing.py` | pending |
 | 6 | `backend/routes/detect.py` | pending |
 | 7 | `backend/routes/history.py` | pending |
