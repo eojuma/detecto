@@ -160,14 +160,17 @@ async def detect(
 ) -> DetectionResponse:
     """Detect people in an uploaded image and record the result."""
     state = request.app.state
+    settings = state.settings
+
+    # Validate the request BEFORE checking model availability: input errors are
+    # deterministic and should always surface as 4xx, regardless of whether the
+    # model happens to be loaded.
+    image_bytes = await _read_upload(request, settings)
+
     session = getattr(state, "session", None)
     if session is None:
         raise _error(503, "model_unavailable", "Model is not loaded yet")
-
-    settings = state.settings
     input_name = state.model_input_name
-
-    image_bytes = await _read_upload(request, settings)
 
     # --- preprocess (decode + letterbox + tensor) ---
     total_start = time.perf_counter()

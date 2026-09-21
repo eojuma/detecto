@@ -73,9 +73,9 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 - [x] `backend/main.py` — lifespan model load, CORS, error handlers, `/health` (tested; graceful no-model mode)
 
 ### Phase 2 — Backend hardening
-- [ ] Validation: 415 / 400 / 413 with structured error bodies
-- [ ] Structured timing logs (inference vs. total)
-- [ ] `scripts/smoke.sh` — curl tests for every endpoint + 3 failures
+- [x] Validation: 415 / 400 / 413 with structured error bodies
+- [x] Structured timing logs (inference vs. total)
+- [x] `scripts/smoke.sh` — curl tests for every endpoint + 3 failures (10 pass, 0 fail, 2 model-absent warns)
 
 ### Phase 3 — Frontend: Detection View
 - [x] Vite scaffold (`package.json`, `vite.config.js`, `index.html`, `main.jsx`, `App.jsx`, page stubs) — builds clean
@@ -128,8 +128,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 16 | `HistoryTable.jsx` | DONE |
 | 17 | `CountChart.jsx` | DONE |
 | 18 | `HistoryPage.jsx` | DONE |
-| 19 | `scripts/smoke.sh` | **NEXT** |
-| 20 | `scripts/benchmark.py` | deferred |
+| 19 | `scripts/smoke.sh` | DONE |
+| 20 | `scripts/benchmark.py` | **NEXT** |
 | 21 | `README.md` | deferred |
 
 ---
