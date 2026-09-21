@@ -129,7 +129,10 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 17 | `CountChart.jsx` | DONE |
 | 18 | `HistoryPage.jsx` | DONE |
 | 19 | `scripts/smoke.sh` | DONE |
-| 20 | `scripts/benchmark.py` | **NEXT** |
+| 20 | **obtain `yolov8n.onnx`** via `scripts/export_model.py` (Colab) | **BLOCKER** |
+| 21 | sample images (10+) + `tests/ground_truth.csv` | pending |
+| 22 | `scripts/benchmark.py` | pending |
+| 23 | `README.md` | pending |
 | 21 | `README.md` | deferred |
 
 ---
@@ -144,6 +147,9 @@ locally. Resolve this before Step 6 (`routes/detect.py`) can be tested.
 2. `yolo export model=yolov8n.pt format=onnx opset=12 imgsz=640`
 3. Download the resulting `yolov8n.onnx` (~12 MB).
 4. Place it at `backend/weights/yolov8n.onnx` (gitignored).
+
+Helper: `scripts/export_model.py` automates steps 1–2 and copies the result
+to `backend/weights/`.
 
 Alternatives (documented, not chosen):
 - **B2** — download a trusted pre-exported ONNX (faster, but third-party weights).
