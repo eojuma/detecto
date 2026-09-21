@@ -134,7 +134,7 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 20 | **obtain `yolov8n.onnx`** via `scripts/export_model.py` (Colab) | DONE — exported locally in a throwaway venv (13 MB, verified) |
 | 21 | sample images (14) + `tests/ground_truth.csv` | DONE (manual counts pending) |
 | 22 | `scripts/benchmark.py` | DONE |
-| 23 | `README.md` | **NEXT** |
+| 23 | `README.md` | DONE (results/screenshots pending) |
 | 23 | `README.md` | pending |
 | 21 | `README.md` | deferred |
 
