@@ -1,0 +1,15 @@
+filename,manual_count,coco_count,category,notes,source
+000000037777.jpg,,0,zero,"Indoor kitchen, no people - control for false positives",http://images.cocodataset.org/val2017/000000037777.jpg
+000000422886.jpg,,1,one_close,Single large person close to camera,http://images.cocodataset.org/val2017/000000422886.jpg
+000000255917.jpg,,1,one_distant,Single small/distant person,http://images.cocodataset.org/val2017/000000255917.jpg
+000000502737.jpg,,2,pair,"Two people, dark scene (mean brightness ~51) - poor lighting",http://images.cocodataset.org/val2017/000000502737.jpg
+000000420281.jpg,,3,group_small,Three people,http://images.cocodataset.org/val2017/000000420281.jpg
+000000461009.jpg,,6,group_mid,Six people,http://images.cocodataset.org/val2017/000000461009.jpg
+000000309391.jpg,,13,group_large,13 small/distant people,http://images.cocodataset.org/val2017/000000309391.jpg
+000000043314.jpg,,3,occluded,Skiers with heavily overlapping boxes (IoU 0.95) - occlusion,http://images.cocodataset.org/val2017/000000043314.jpg
+000000139099.jpg,,14,crowd,Street market crowd - density/occlusion,http://images.cocodataset.org/val2017/000000139099.jpg
+000000078748.jpg,,14,crowd,Street market crowd - density/occlusion,http://images.cocodataset.org/val2017/000000078748.jpg
+000000239717.jpg,,8,partial2,Subject cut off by frame edge - partial visibility,http://images.cocodataset.org/val2017/000000239717.jpg
+000000467511.jpg,,2,pair2,Two people,http://images.cocodataset.org/val2017/000000467511.jpg
+000000400573.jpg,,4,group_mid2,"Four people, subject at edge",http://images.cocodataset.org/val2017/000000400573.jpg
+000000345027.jpg,,14,distant2,"Many small distant people, bright scene",http://images.cocodataset.org/val2017/000000345027.jpg

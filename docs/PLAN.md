@@ -91,8 +91,8 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 - [x] `HistoryPage.jsx` — one result set drives chart + table; clear-history
 
 ### Phase 5 — Testing & benchmarking
-- [ ] Assemble 10+ sample images (easy, occlusion, partial, distant, dark, zero-person)
-- [ ] `tests/ground_truth.csv` — manual hand count
+- [x] Assemble 14 COCO val2017 sample images (close, distant, pair, groups, crowd, occlusion, partial, dark, zero-person)
+- [x] `tests/ground_truth.csv` — template with `coco_count` hint; **`manual_count` still to be filled by hand**
 - [ ] `scripts/benchmark.py` — per-image metrics + markdown table
 - [ ] Run benchmark, record **real** numbers
 
@@ -130,8 +130,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 18 | `HistoryPage.jsx` | DONE |
 | 19 | `scripts/smoke.sh` | DONE |
 | 20 | **obtain `yolov8n.onnx`** via `scripts/export_model.py` (Colab) | **BLOCKER** |
-| 21 | sample images (10+) + `tests/ground_truth.csv` | pending |
-| 22 | `scripts/benchmark.py` | pending |
+| 21 | sample images (14) + `tests/ground_truth.csv` | DONE (manual counts pending) |
+| 22 | `scripts/benchmark.py` | **NEXT** |
 | 23 | `README.md` | pending |
 | 21 | `README.md` | deferred |
 
