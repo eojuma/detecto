@@ -31,7 +31,7 @@ or warehouses. The output must be accurate, responsive, and operator-friendly.
 | D3 | **Backend owns the coordinate transform** | It knows the letterbox parameters; the frontend only scales original-pixel boxes to display size. Single source of truth — this is the #1 bug source. |
 | D4 | **SQLite + WAL mode** | Zero-config, supports concurrent reads, and filtering lives in SQL. |
 | D5 | **Filtering in SQL, not the client** | Hundreds of rows, not millions. Smaller payloads, simpler frontend. |
-| D6 | **Bounding boxes rendered on a `<canvas>` overlay** | Sharp at any display size, efficient for ~50 boxes, uses React refs. |
+| D6 | **Bounding boxes rendered as inline `<svg>` with `viewBox` = original pixel dims** | Browser scales boxes to any display size for free; vector-sharp; avoids canvas devicePixelRatio math. *(Revised from canvas — canvas only wins for high-frequency video.)* |
 | D7 | **Recharts** for the count-over-time chart | React-native, lightweight, good API. |
 | D8 | **NMS implemented by us** (numpy / `cv2.dnn.NMSBoxes`) | ONNX export excludes NMS, so we control IoU threshold and ordering. |
 | D9 | **CORS from env, never `*`** | Brief requirement; real origins only. |
@@ -80,7 +80,7 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 ### Phase 3 — Frontend: Detection View
 - [x] Vite scaffold (`package.json`, `vite.config.js`, `index.html`, `main.jsx`, `App.jsx`, page stubs) — builds clean
 - [x] `ImageUpload.jsx` — drag-drop + picker, client-side validation
-- [ ] `CanvasOverlay.jsx` — refs + draw loop
+- [x] `BoxOverlay.jsx` — inline SVG viewBox + label collision handling
 - [ ] `DetectionPanel.jsx` — count / avg confidence / timing / errors
 - [ ] `DetectionPage.jsx` — orchestration
 
@@ -121,8 +121,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 9 | frontend scaffold (`package.json`, `vite.config.js`, `index.html`, `main.jsx`, `App.jsx`) | DONE |
 | 10 | `api.js` client | DONE |
 | 11 | `ImageUpload.jsx` | DONE |
-| 12 | `CanvasOverlay.jsx` | **NEXT** |
-| 13 | `DetectionPanel.jsx` | pending |
+| 12 | `BoxOverlay.jsx` | DONE |
+| 13 | `DetectionPanel.jsx` | **NEXT** |
 | 14 | `DetectionPage.jsx` | pending |
 | 15 | `HistoryFilters.jsx` | pending |
 | 16 | `HistoryTable.jsx` | pending |
