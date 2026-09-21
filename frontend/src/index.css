@@ -476,3 +476,26 @@ select {
   font-size: 0.7rem;
   opacity: 0.8;
 }
+
+/* --- CountChart --------------------------------------------------------- */
+
+.chart-card {
+  margin-bottom: 20px;
+}
+
+.chart-tooltip {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 0.82rem;
+}
+
+.chart-tooltip-time {
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.chart-tooltip-muted {
+  color: var(--text-muted);
+}

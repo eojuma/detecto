@@ -87,7 +87,7 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 ### Phase 4 — Frontend: History View
 - [x] `HistoryFilters.jsx` — date/time/confidence filters, draft state
 - [x] `HistoryTable.jsx` — sortable, empty state
-- [ ] `CountChart.jsx`
+- [x] `CountChart.jsx` — Recharts time series
 - [ ] `HistoryPage.jsx`
 
 ### Phase 5 — Testing & benchmarking
@@ -126,8 +126,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 14 | `DetectionPage.jsx` | DONE |
 | 15 | `HistoryFilters.jsx` | DONE |
 | 16 | `HistoryTable.jsx` | DONE |
-| 17 | `CountChart.jsx` | **NEXT** |
-| 18 | `HistoryPage.jsx` | pending |
+| 17 | `CountChart.jsx` | DONE |
+| 18 | `HistoryPage.jsx` | **NEXT** |
 | 19 | `scripts/smoke.sh` | deferred to after frontend |
 | 20 | `scripts/benchmark.py` | deferred |
 | 21 | `README.md` | deferred |
