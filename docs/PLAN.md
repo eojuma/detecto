@@ -70,7 +70,7 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 - [x] `backend/utils/preprocessing.py` — decode, letterbox, normalize, **inverse transform**, NMS (round-trip verified)
 - [x] `backend/routes/detect.py` — `POST /detect` (multipart + base64, tested with mocked session)
 - [x] `backend/routes/history.py` — `GET /history`, `DELETE /reset` (tested)
-- [ ] `backend/main.py` — lifespan model load, CORS, error handlers
+- [x] `backend/main.py` — lifespan model load, CORS, error handlers, `/health` (tested; graceful no-model mode)
 
 ### Phase 2 — Backend hardening
 - [ ] Validation: 415 / 400 / 413 with structured error bodies
@@ -117,8 +117,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 5 | `backend/utils/preprocessing.py` | DONE |
 | 6 | `backend/routes/detect.py` | DONE |
 | 7 | `backend/routes/history.py` | DONE |
-| 8 | `backend/main.py` | **NEXT** |
-| 9 | `scripts/smoke.sh` | pending |
+| 8 | `backend/main.py` | DONE |
+| 9 | `scripts/smoke.sh` | **NEXT** |
 | 10 | frontend scaffold | pending |
 | 11 | `ImageUpload.jsx` | pending |
 | 12 | `CanvasOverlay.jsx` | pending |
