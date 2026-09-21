@@ -91,6 +91,9 @@ class Settings:
     # The brief suggested 0.5; this is a documented, evidence-based deviation.
     conf_threshold: float = 0.25
     nms_iou_threshold: float = 0.6
+    # Drop detections more than this fraction outside the frame (people cut
+    # off by the edge). 1.0 disables the filter.
+    max_edge_clip_fraction: float = 0.3
     person_class_id: int = 0
     max_upload_mb: int = 10
     allowed_mime_types: set[str] = field(default_factory=lambda: {"image/jpeg", "image/png"})
@@ -111,6 +114,7 @@ class Settings:
             img_size=int(os.getenv("IMG_SIZE", "640")),
             conf_threshold=float(os.getenv("CONF_THRESHOLD", "0.25")),
             nms_iou_threshold=float(os.getenv("NMS_IOU_THRESHOLD", "0.6")),
+            max_edge_clip_fraction=float(os.getenv("MAX_EDGE_CLIP_FRACTION", "0.3")),
             person_class_id=int(os.getenv("PERSON_CLASS_ID", "0")),
             max_upload_mb=int(os.getenv("MAX_UPLOAD_MB", "10")),
             allowed_mime_types=set(

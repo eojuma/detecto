@@ -43,6 +43,17 @@ import numpy as np
 # look like a strong edge to the network.
 _LETTERBOX_FILL = 114
 
+# Pixel tolerance for deciding a box is "flush" against the image border. The
+# model predicts cut-off people to within a pixel or two of the edge, so a
+# small tolerance is enough and avoids dropping fully-visible edge subjects.
+_EDGE_TOLERANCE_PX = 2.0
+
+# A flush box is treated as truncated when it is thinner than this ratio of its
+# other dimension (width/height for side borders, height/width for top/bottom).
+# A full standing person is ~0.3-0.45, so 0.5 catches slivers while keeping
+# normal-shaped subjects that merely touch the frame.
+_EDGE_ASPECT_MIN = 0.5
+
 __all__ = [
     "ImageDecodeError",
     "decode_image",
@@ -256,6 +267,7 @@ def postprocess(
     conf_threshold: float,
     iou_threshold: float,
     person_class_id: int = 0,
+    max_edge_clip_fraction: float = 0.3,
 ) -> tuple[np.ndarray, np.ndarray]:
     """Turn raw YOLOv8 output into boxes in ORIGINAL image pixel coordinates.
 
@@ -265,6 +277,13 @@ def postprocess(
 
     Returns (boxes_xyxy, scores) both in original-image pixels, de-duplicated
     by NMS and clamped to the image bounds.
+
+    ``max_edge_clip_fraction`` controls dropping detections cut off by the
+    frame. A box is dropped if EITHER more than this fraction of its raw area
+    lies outside [0, W] x [0, H], OR it lies flush against a border (meaning
+    the person continues beyond the visible frame). 0.3 removes people mostly
+    outside the frame while keeping people who merely stand near the edge.
+    Set to 1.0 to disable the filter entirely.
     """
     pred = np.squeeze(model_output, axis=0)  # (4 + C, A)
 
@@ -308,8 +327,58 @@ def postprocess(
     person_scores = person_scores[keep]
 
     # --- The inverse transform: letterboxed pixels -> original pixels ---
+    # Boxes may now extend beyond the image (the model can predict into the
+    # letterbox padding), so we measure the overflow BEFORE clamping.
     boxes_xyxy[:, [0, 2]] = (boxes_xyxy[:, [0, 2]] - meta["pad_w"]) / meta["scale_x"]
     boxes_xyxy[:, [1, 3]] = (boxes_xyxy[:, [1, 3]] - meta["pad_h"]) / meta["scale_y"]
+
+    # Drop detections that are mostly OUTSIDE the frame (people cut off by the
+    # edge). Fraction clipped = 1 - visible_area / box_area, computed on the
+    # raw box. A person standing at the edge but fully visible has ~0 clipped;
+    # someone half out of frame is > 0.5.
+    if max_edge_clip_fraction < 1.0:
+        width, height = float(meta["orig_w"]), float(meta["orig_h"])
+        raw_w = np.maximum(0.0, boxes_xyxy[:, 2] - boxes_xyxy[:, 0])
+        raw_h = np.maximum(0.0, boxes_xyxy[:, 3] - boxes_xyxy[:, 1])
+        box_area = raw_w * raw_h
+
+        vis_w = np.maximum(
+            0.0, np.minimum(boxes_xyxy[:, 2], width) - np.maximum(boxes_xyxy[:, 0], 0.0)
+        )
+        vis_h = np.maximum(
+            0.0, np.minimum(boxes_xyxy[:, 3], height) - np.maximum(boxes_xyxy[:, 1], 0.0)
+        )
+        visible_area = vis_w * vis_h
+
+        clipped = 1.0 - np.divide(
+            visible_area, box_area, out=np.zeros_like(box_area), where=box_area > 0
+        )
+
+        # Second signal: a box flush against a border means the person's body
+        # may continue past the frame. Necessary because when the image has no
+        # padding on an axis, the model cannot predict beyond the edge (it
+        # stops exactly at it), so the area-overflow test alone misses it.
+        #
+        # We only treat it as truncated when the box is THIN on the flush axis
+        # (much narrower than tall for a side, or much shorter than wide for
+        # top/bottom). This avoids dropping a close-up subject whose body
+        # extends past the frame but whose face fills the image.
+        tol = _EDGE_TOLERANCE_PX
+        touches_lr = (boxes_xyxy[:, 0] <= tol) | (boxes_xyxy[:, 2] >= width - tol)
+        touches_tb = (boxes_xyxy[:, 1] <= tol) | (boxes_xyxy[:, 3] >= height - tol)
+
+        box_w = np.maximum(0.0, boxes_xyxy[:, 2] - boxes_xyxy[:, 0])
+        box_h = np.maximum(0.0, boxes_xyxy[:, 3] - boxes_xyxy[:, 1])
+        truncated = (touches_lr & (box_w < box_h * _EDGE_ASPECT_MIN)) | (
+            touches_tb & (box_h < box_w * _EDGE_ASPECT_MIN)
+        )
+
+        keep_inside = (clipped <= max_edge_clip_fraction) & (~truncated)
+        boxes_xyxy = boxes_xyxy[keep_inside]
+        person_scores = person_scores[keep_inside]
+
+    if boxes_xyxy.shape[0] == 0:
+        return np.empty((0, 4), dtype=np.float32), np.empty((0,), dtype=np.float32)
 
     # Clamp to the original image so no box can point outside it.
     boxes_xyxy[:, [0, 2]] = np.clip(boxes_xyxy[:, [0, 2]], 0, meta["orig_w"])

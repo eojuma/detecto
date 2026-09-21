@@ -200,6 +200,7 @@ async def detect(
         conf_threshold=settings.conf_threshold,
         iou_threshold=settings.nms_iou_threshold,
         person_class_id=settings.person_class_id,
+        max_edge_clip_fraction=settings.max_edge_clip_fraction,
     )
 
     person_count = int(boxes.shape[0])

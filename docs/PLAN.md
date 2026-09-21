@@ -36,6 +36,7 @@ or warehouses. The output must be accurate, responsive, and operator-friendly.
 | D8 | **NMS implemented by us** (numpy / `cv2.dnn.NMSBoxes`) | ONNX export excludes NMS, so we control IoU threshold and ordering. |
 | D9 | **CORS from env, never `*`** | Brief requirement; real origins only. |
 | D10 | **Default `CONF_THRESHOLD=0.25`, `NMS_IOU_THRESHOLD=0.6`** (brief suggested 0.5/0.45) | Measured on the 14-image set: 0.25 recovers occluded/small people in crowds (7→13 on the crowded sample) with **zero** added false positives on the easy and zero-person images. Evidence-based deviation. |
+| D11 | **Frame-edge filter** (`MAX_EDGE_CLIP_FRACTION=0.3`, 1.0 disables) | People cut off by the frame should not be counted. Drops boxes that are mostly outside the frame, or *truncated* slivers flush against a border. A close-up subject whose body extends past the edge but whose face fills the frame is kept (shape test). |
 
 ---
 
