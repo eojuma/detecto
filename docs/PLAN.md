@@ -86,7 +86,7 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 
 ### Phase 4 — Frontend: History View
 - [x] `HistoryFilters.jsx` — date/time/confidence filters, draft state
-- [ ] `HistoryTable.jsx`
+- [x] `HistoryTable.jsx` — sortable, empty state
 - [ ] `CountChart.jsx`
 - [ ] `HistoryPage.jsx`
 
@@ -125,8 +125,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 13 | `DetectionPanel.jsx` | DONE |
 | 14 | `DetectionPage.jsx` | DONE |
 | 15 | `HistoryFilters.jsx` | DONE |
-| 16 | `HistoryTable.jsx` | **NEXT** |
-| 17 | `CountChart.jsx` | pending |
+| 16 | `HistoryTable.jsx` | DONE |
+| 17 | `CountChart.jsx` | **NEXT** |
 | 18 | `HistoryPage.jsx` | pending |
 | 19 | `scripts/smoke.sh` | deferred to after frontend |
 | 20 | `scripts/benchmark.py` | deferred |
