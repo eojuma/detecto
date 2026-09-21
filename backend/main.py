@@ -136,6 +136,20 @@ settings = Settings.from_env()
 # ---------------------------------------------------------------------------
 
 
+def _looks_like_html(path: Path) -> bool:
+    """Detect an HTML document masquerading as a model.
+
+    A common failure is downloading a model from a web page (e.g. GitHub),
+    which saves the page's HTML instead of the model binary. Checking the
+    first bytes turns a cryptic InvalidProtobuf traceback into a clear hint.
+    """
+    try:
+        head = path.read_bytes()[:512].lstrip().lower()
+    except OSError:
+        return False
+    return head.startswith(b"<") or b"<!doctype html" in head or b"<html" in head
+
+
 def _load_model(settings: Settings) -> tuple[Any, str | None]:
     """Create the ONNX InferenceSession. Returns (session, input_name).
 
@@ -152,6 +166,15 @@ def _load_model(settings: Settings) -> tuple[Any, str | None]:
         )
         return None, None
 
+    if _looks_like_html(model_path):
+        logger.error(
+            "Model file at %s is an HTML document, not an ONNX model. It was "
+            "likely downloaded from a web page instead of exported. Run "
+            "scripts/export_model.py (see docs/PLAN.md section 6).",
+            model_path,
+        )
+        return None, None
+
     options = ort.SessionOptions()
     options.intra_op_num_threads = settings.ort_num_threads
     options.graph_optimization_level = ort.GraphOptimizationLevel.ORT_ENABLE_ALL
@@ -159,7 +182,11 @@ def _load_model(settings: Settings) -> tuple[Any, str | None]:
     try:
         session = ort.InferenceSession(str(model_path), sess_options=options, providers=["CPUExecutionProvider"])
     except Exception:
-        logger.exception("Failed to create ONNX InferenceSession from %s", model_path)
+        logger.exception(
+            "Failed to create ONNX InferenceSession from %s -- the file is "
+            "corrupt or not a valid ONNX model.",
+            model_path,
+        )
         return None, None
 
     input_name = session.get_inputs()[0].name

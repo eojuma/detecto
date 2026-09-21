@@ -129,7 +129,7 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 17 | `CountChart.jsx` | DONE |
 | 18 | `HistoryPage.jsx` | DONE |
 | 19 | `scripts/smoke.sh` | DONE |
-| 20 | **obtain `yolov8n.onnx`** via `scripts/export_model.py` (Colab) | **BLOCKER** |
+| 20 | **obtain `yolov8n.onnx`** via `scripts/export_model.py` (Colab) | DONE — exported locally in a throwaway venv (13 MB, verified) |
 | 21 | sample images (14) + `tests/ground_truth.csv` | DONE (manual counts pending) |
 | 22 | `scripts/benchmark.py` | DONE |
 | 23 | `README.md` | **NEXT** |
@@ -204,7 +204,10 @@ bash scripts/smoke.sh
 
 ## 9. Open questions / to-decide
 
-- [ ] Confirm `yolov8n.onnx` obtained (B1) and placed in `backend/weights/`.
+- [x] Confirm `yolov8n.onnx` obtained and placed in `backend/weights/`.
+      Exported locally via a throwaway venv (CPU torch + ultralytics), then
+      the venv was deleted. Verified: input `[1,3,640,640]`, output
+      `[1,84,8400]`, ~140 ms/inference on the target CPU.
 - [ ] Decide exact error-response envelope shape (proposed:
       `{"error": {"code": str, "message": str, "detail": str | null}}`).
 - [ ] Decide whether annotated image is returned by default or opt-in

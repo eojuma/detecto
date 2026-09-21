@@ -21,7 +21,7 @@ FAIL=0
 WARN=0
 
 # A 1x1 PNG, embedded so the script needs no external fixture.
-PNG_B64="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
+PNG_B64="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACklEQVQIHWMAAgAABAABDTukuQAAAABJRU5ErkJggg=="
 printf '%s' "$PNG_B64" | base64 -d > "$TMP_DIR/sample.png"
 : > "$TMP_DIR/empty.png"                      # zero-byte file
 printf 'not an image' > "$TMP_DIR/fake.png"   # wrong bytes, .png name
