@@ -339,3 +339,34 @@ select {
   opacity: 0.85;
   white-space: pre-wrap;
 }
+
+/* --- DetectionPage ------------------------------------------------------ */
+
+.detect-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .detect-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detect-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detect-right {
+  position: sticky;
+  top: 24px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}

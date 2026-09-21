@@ -82,7 +82,7 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 - [x] `ImageUpload.jsx` — drag-drop + picker, client-side validation
 - [x] `BoxOverlay.jsx` — inline SVG viewBox + label collision handling
 - [x] `DetectionPanel.jsx` — count / avg confidence / timing / errors / zero-person
-- [ ] `DetectionPage.jsx` — orchestration
+- [x] `DetectionPage.jsx` — orchestration (object-URL lifecycle, request state machine)
 
 ### Phase 4 — Frontend: History View
 - [ ] `HistoryFilters.jsx`
@@ -123,8 +123,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 11 | `ImageUpload.jsx` | DONE |
 | 12 | `BoxOverlay.jsx` | DONE |
 | 13 | `DetectionPanel.jsx` | DONE |
-| 14 | `DetectionPage.jsx` | **NEXT** |
-| 15 | `HistoryFilters.jsx` | pending |
+| 14 | `DetectionPage.jsx` | DONE |
+| 15 | `HistoryFilters.jsx` | **NEXT** |
 | 16 | `HistoryTable.jsx` | pending |
 | 17 | `CountChart.jsx` | pending |
 | 18 | `HistoryPage.jsx` | pending |
