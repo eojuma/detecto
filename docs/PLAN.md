@@ -78,7 +78,7 @@ Disk cleanup performed (no sudo): cleared `~/.cache` and npm cache → freed 4.6
 - [ ] `scripts/smoke.sh` — curl tests for every endpoint + 3 failures
 
 ### Phase 3 — Frontend: Detection View
-- [ ] Vite scaffold (`package.json`, `vite.config.js`, `main.jsx`, `App.jsx`)
+- [x] Vite scaffold (`package.json`, `vite.config.js`, `index.html`, `main.jsx`, `App.jsx`, page stubs) — builds clean
 - [ ] `ImageUpload.jsx` — drag-drop + picker, client-side validation
 - [ ] `CanvasOverlay.jsx` — refs + draw loop
 - [ ] `DetectionPanel.jsx` — count / avg confidence / timing / errors
@@ -118,8 +118,8 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 6 | `backend/routes/detect.py` | DONE |
 | 7 | `backend/routes/history.py` | DONE |
 | 8 | `backend/main.py` | DONE |
-| 9 | frontend scaffold (`package.json`, `vite.config.js`, `index.html`, `main.jsx`, `App.jsx`) | **NEXT** |
-| 10 | `ImageUpload.jsx` | pending |
+| 9 | frontend scaffold (`package.json`, `vite.config.js`, `index.html`, `main.jsx`, `App.jsx`) | DONE |
+| 10 | `api.js` client + `ImageUpload.jsx` | **NEXT** |
 | 11 | `CanvasOverlay.jsx` | pending |
 | 12 | `DetectionPanel.jsx` | pending |
 | 13 | `DetectionPage.jsx` | pending |
