@@ -119,17 +119,18 @@ One file per step. Complete, commented, runnable. Stop and verify after each.
 | 7 | `backend/routes/history.py` | DONE |
 | 8 | `backend/main.py` | DONE |
 | 9 | frontend scaffold (`package.json`, `vite.config.js`, `index.html`, `main.jsx`, `App.jsx`) | DONE |
-| 10 | `api.js` client + `ImageUpload.jsx` | **NEXT** |
-| 11 | `CanvasOverlay.jsx` | pending |
-| 12 | `DetectionPanel.jsx` | pending |
-| 13 | `DetectionPage.jsx` | pending |
-| 14 | `HistoryFilters.jsx` | pending |
-| 15 | `HistoryTable.jsx` | pending |
-| 16 | `CountChart.jsx` | pending |
-| 17 | `HistoryPage.jsx` | pending |
-| 18 | `scripts/smoke.sh` | deferred to after frontend |
-| 19 | `scripts/benchmark.py` | deferred |
-| 20 | `README.md` | deferred |
+| 10 | `api.js` client | DONE |
+| 11 | `ImageUpload.jsx` | **NEXT** |
+| 12 | `CanvasOverlay.jsx` | pending |
+| 13 | `DetectionPanel.jsx` | pending |
+| 14 | `DetectionPage.jsx` | pending |
+| 15 | `HistoryFilters.jsx` | pending |
+| 16 | `HistoryTable.jsx` | pending |
+| 17 | `CountChart.jsx` | pending |
+| 18 | `HistoryPage.jsx` | pending |
+| 19 | `scripts/smoke.sh` | deferred to after frontend |
+| 20 | `scripts/benchmark.py` | deferred |
+| 21 | `README.md` | deferred |
 
 ---
 
