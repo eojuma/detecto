@@ -1,0 +1,59 @@
+# detecto — git ignore rules
+# ---------------------------------------------------------------------------
+# Rule of thumb: commit SOURCE and CONFIG TEMPLATES; ignore DERIVED artifacts,
+# machine-specific files, and anything secret.
+# ---------------------------------------------------------------------------
+
+# --- Python -----------------------------------------------------------------
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Environment / secrets --------------------------------------------------
+# Real config is machine-specific and may hold secrets. Commit .env.example only.
+.env
+.env.*
+!.env.example
+
+# --- Model weights ----------------------------------------------------------
+# The ONNX model is large and reproducible from the export step in docs/PLAN.md.
+# Never commit weights.
+backend/weights/
+*.onnx
+*.pt
+*.pth
+
+# --- Storage -----------------------------------------------------------------
+# SQLite database and its WAL sidecar files are runtime state.
+backend/data/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite3
+
+# --- Node / frontend --------------------------------------------------------
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Logs -------------------------------------------------------------------
+*.log
+logs/
+
+# --- Editor / OS ------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

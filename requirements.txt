@@ -1,0 +1,25 @@
+# detecto — backend dependencies (pinned)
+# ---------------------------------------------------------------------------
+# Why pinned? An unpinned install lets pip resolve whatever is newest, which
+# frequently produces incompatible numpy/opencv/onnxruntime combinations.
+# Pinning makes the environment reproducible on any machine.
+#
+# Why no torch / ultralytics? We run the pretrained YOLOv8n model through
+# ONNX Runtime instead of PyTorch. Same model, same results, ~2.5 GB smaller
+# (torch does not fit on the target machine's disk). We also own the
+# preprocessing + NMS ourselves, which we need anyway for the coordinate
+# transform.
+# ---------------------------------------------------------------------------
+
+# --- Web API layer ---------------------------------------------------------
+fastapi==0.115.6            # ASGI web framework: routing, DI, validation
+uvicorn[standard]==0.34.0   # ASGI server that actually runs FastAPI
+pydantic==2.10.4            # request/response schemas + validation
+python-multipart==0.0.20    # parses multipart/form-data (file uploads)
+python-dotenv==1.0.1        # loads .env into process environment
+
+# --- Inference + image processing ------------------------------------------
+onnxruntime==1.20.1         # CPU inference engine for yolov8n.onnx (no torch)
+opencv-python-headless==4.10.0.84  # decode/resize/letterbox/NMS; headless = no GUI
+numpy==1.26.4               # array math for the coordinate transforms
+pillow==11.0.0              # robust decode fallback + base64 image encoding
